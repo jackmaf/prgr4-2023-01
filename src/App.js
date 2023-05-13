@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 
 // function formatName(user) {
@@ -32,28 +32,34 @@ import "./App.css";
 //   <img className="imagen-fea" width="100%" src={objectImage.url}></img>
 // );
 
+function TitleLogin(props) {
+  return (
+    <>
+      <label for="tab-1" className="tab">
+        {props.principalTitle}
+      </label>
+      <input id="tab-2" type="radio" name="tab" className="for-pwd" />
+      <label for="tab-2" className="tab">
+        {props.secondTitle}
+      </label>
+    </>
+  );
+}
+
+function InputLogin({ labelName, labelFor = "userjack", type = "text" }) {
+  return (
+    <div className="group">
+      <label for={labelFor} className="label">
+        {labelName}
+      </label>
+      <input id={labelFor} type={type} className="input" />
+    </div>
+  );
+}
+
 function App() {
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          {/*imagenPrincipal*/}
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> jack and save to reload.
-          </p>
-          {/*getGreeting(user)*/}
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-
       <div className="login-wrap">
         <div className="login-html">
           <input
@@ -63,32 +69,18 @@ function App() {
             className="sign-in"
             checked="checked"
           />
-          <label for="tab-1" className="tab">
-            Sign In
-          </label>
-          <input id="tab-2" type="radio" name="tab" className="for-pwd" />
-          <label for="tab-2" className="tab">
-            Forgot Password
-          </label>
+          <TitleLogin
+            principalTitle="Sign In Jack"
+            secondTitle="Forgot Password Jack"
+          />
           <div className="login-form">
             <div className="sign-in-htm">
-              <div className="group">
-                <label for="user" className="label">
-                  Username or Email
-                </label>
-                <input id="user" type="text" className="input" />
-              </div>
-              <div className="group">
-                <label for="pass" className="label">
-                  Password
-                </label>
-                <input
-                  id="pass"
-                  type="password"
-                  className="input"
-                  data-type="password"
-                />
-              </div>
+              <InputLogin labelName="Username or Email"></InputLogin>
+              <InputLogin
+                labelName="Password"
+                labelFor="pass"
+                type="password"
+              />
               <div className="group">
                 <input type="submit" className="button" value="Sign In" />
               </div>
